@@ -107,4 +107,3 @@ finally {
         Remove-Item -LiteralPath $resolvedTempDir -Recurse -Force -ErrorAction SilentlyContinue
     }
 }
-
