@@ -2,41 +2,42 @@
 
 [![Xメディア取得を起動](https://img.shields.io/badge/Run-X_Media_Downloader-2EA44F?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/pukutai3/XUserMedia-Downloader/actions/workflows/download-x-media.yml)
 
-上のボタンからワークフローページを開き、`Run workflow` を押してXのユーザー名を入力します。
+GitHub ActionsでXのユーザー名を入力すると、そのユーザー自身が投稿した画像・GIF・動画をZIPにまとめます。Xのプロフィールに表示される範囲だけで終わらせず、`gallery-dl`のメディアタイムラインと検索を使用します。ただし、検索索引に存在しない投稿、削除済み・非公開・閲覧権限外の投稿は取得できません。
 
-GitHub Actionsの画面でXのユーザー名を入力し、そのユーザー自身が投稿した画像・GIF・動画をZIPで取得します。
+## 初回のみ: X認証を設定
 
-Xのプロフィールにあるメディア欄だけで終了せず、`gallery-dl` のメディアタイムラインと検索を使用します。ただし、Xの検索索引に存在しない投稿、削除済み・非公開・閲覧権限外の投稿は取得できません。
+現在のXはユーザーのメディアタイムライン取得にもログインを要求します。GitHubの実行環境は手元のブラウザーCookieを直接読めないため、最初にWindows上で次を一度実行してください。
+
+1. Firefox、Edge、Chromeのいずれかで `x.com` にログインします。
+2. このリポジトリを取得し、PowerShellでセットアップを実行します。
+
+```powershell
+git clone https://github.com/pukutai3/XUserMedia-Downloader.git
+cd XUserMedia-Downloader
+powershell -ExecutionPolicy Bypass -File .\Setup-XAuthentication.ps1
+```
+
+スクリプトはログイン済みブラウザーからX用Cookieだけを一時取得し、GitHub Actions Secret `X_COOKIES_B64` へ直接登録します。Cookieの内容は画面に表示せず、リポジトリにも保存しません。GitHub CLIやPythonがない場合は、その旨を表示して停止します。
+
+自動選択がうまくいかない場合はブラウザーを指定できます。
+
+```powershell
+.\Setup-XAuthentication.ps1 -Browser Firefox
+.\Setup-XAuthentication.ps1 -Browser Edge
+.\Setup-XAuthentication.ps1 -Browser Chrome
+```
+
+CookieはXアカウントへアクセスできる認証情報です。ワークフロー入力、Issue、Actions Variable、リポジトリ内のファイルには貼らないでください。Xからログアウトした場合や認証期限が切れた場合は、セットアップを再実行します。
 
 ## 使い方
 
-1. リポジトリ上部の `Actions` を開きます。
-2. 左側から `Download X media` を選択します。
-3. `Run workflow` を押します。
-4. `username` にXのユーザー名を入力して実行します。`@username` やプロフィールURLも使用できます。
-5. 完了した実行結果を開き、ページ下部の `Artifacts` にある `x-media-実行ID` をクリックします。
-6. 取得した画像・GIF・動画がZIPでダウンロードされます。
+1. 上の緑色の起動ボタンを押します。
+2. `Run workflow` を押します。
+3. `username` にXのユーザー名を入力します。`@username` やプロフィールURLも使用できます。
+4. 実行完了後、ページ下部の `Artifacts` にある `x-media-実行ID` をクリックします。
+5. 取得した画像・GIF・動画を含むZIPがブラウザーからダウンロードされます。
 
-GitHub Actionsの仕様上、処理完了と同時にブラウザーへ自動ダウンロードを開始することはできません。Artifactをクリックする操作が一度必要です。Artifactの保存期間は14日です。
-
-## Xのログインが必要な場合
-
-公開範囲だけを取得する場合、追加設定は不要です。センシティブ設定などログインが必要な投稿も対象にする場合は、Netscape形式のX用 `cookies.txt` をBase64化し、Actions Secretとして登録します。
-
-Windows PowerShellでBase64をクリップボードへコピーする例:
-
-```powershell
-[Convert]::ToBase64String([IO.File]::ReadAllBytes("x-cookies.txt")) | Set-Clipboard
-```
-
-リポジトリの `Settings > Secrets and variables > Actions` で、次のRepository Secretを作成します。
-
-```text
-Name: X_COOKIES_B64
-Secret: クリップボードへコピーした文字列
-```
-
-CookieはXアカウントへアクセスできる認証情報です。リポジトリのファイル、Issue、Actions Variableには貼らないでください。Secretの上限は48 KBなので、X以外のドメインを含まないCookieファイルを使用してください。Cookieを使う場合は非公開リポジトリを推奨します。
+GitHub Actionsの仕様上、処理完了と同時にブラウザーへ自動ダウンロードを開始することはできません。Artifactを一度クリックする必要があります。Artifactの保存期間は14日です。
 
 ## 保存対象
 
@@ -48,8 +49,6 @@ CookieはXアカウントへアクセスできる認証情報です。リポジ�
 - リポスト内のメディア
 - 引用元ユーザーのメディア
 - 削除済み、非公開、閲覧権限外の投稿
-
-取得ファイルやCookieはリポジトリへcommitしません。実行環境は毎回破棄されるため、この構成は一括取得向けです。
 
 ## 注意
 

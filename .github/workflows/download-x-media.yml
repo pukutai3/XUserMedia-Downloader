@@ -38,20 +38,30 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Prepare optional X cookies
+      - name: Prepare X authentication
         id: cookies
         env:
           X_COOKIES_B64: ${{ secrets.X_COOKIES_B64 }}
         shell: bash
         run: |
-          if [[ -n "$X_COOKIES_B64" ]]; then
-            cookie_path="$RUNNER_TEMP/x-cookies.txt"
-            printf '%s' "$X_COOKIES_B64" | base64 --decode > "$cookie_path"
-            chmod 600 "$cookie_path"
-            echo "path=$cookie_path" >> "$GITHUB_OUTPUT"
-          else
-            echo "path=" >> "$GITHUB_OUTPUT"
+          if [[ -z "$X_COOKIES_B64" ]]; then
+            echo "::error title=X authentication is not configured::Run Setup-XAuthentication.ps1 locally once, then retry this workflow."
+            exit 16
           fi
+
+          umask 077
+          cookie_path="$RUNNER_TEMP/x-cookies.txt"
+          if ! printf '%s' "$X_COOKIES_B64" | base64 --decode > "$cookie_path"; then
+            echo "::error title=Invalid X authentication::X_COOKIES_B64 is not valid Base64. Run Setup-XAuthentication.ps1 again."
+            exit 16
+          fi
+
+          if ! awk -F '\t' '$6 == "auth_token" { auth=1 } $6 == "ct0" { ct0=1 } END { exit !(auth && ct0) }' "$cookie_path"; then
+            echo "::error title=Invalid X authentication::Required X cookies are missing. Run Setup-XAuthentication.ps1 again."
+            exit 16
+          fi
+
+          echo "path=$cookie_path" >> "$GITHUB_OUTPUT"
 
       - name: Download media
         env:
@@ -64,9 +74,7 @@ jobs:
           if [[ "$WRITE_METADATA" == "true" ]]; then
             args+=(--write-metadata)
           fi
-          if [[ -n "$COOKIE_PATH" ]]; then
-            args+=(--cookies "$COOKIE_PATH")
-          fi
+          args+=(--cookies "$COOKIE_PATH")
           "${args[@]}"
 
       - name: Upload ZIP artifact
