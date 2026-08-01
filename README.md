@@ -1,6 +1,6 @@
 # XUserMedia-Downloader
 
-[![ブックマークレットを導入](https://img.shields.io/badge/Install-X_Media_Downloader-1686F0?style=for-the-badge&logo=github&logoColor=white)](https://pukutai3.github.io/XUserMedia-Downloader/?v=2.2.1)
+[![ブックマークレットを導入](https://img.shields.io/badge/Install-X_Media_Downloader-1686F0?style=for-the-badge&logo=github&logoColor=white)](https://pukutai3.github.io/XUserMedia-Downloader/?v=2.3.0)
 
 ログイン済みのX上で動く、無料のメディア保存ブックマークレットです。Cookie、パスワード、トークンをGitHubや外部サーバーへ送信せず、取得した画像・GIF・動画をブラウザー内でZIPにまとめます。
 
@@ -19,9 +19,10 @@ PCへのアプリや拡張機能のインストール、GitHub Actions、GitHub 
 
 ## 中断と再開
 
-- 一覧を1ページ取得するたび、投稿ID、メディアURL、件数、次の取得境界をXのサイトデータ（IndexedDB）へ保存します。
+- 一覧を1ページ取得するたび、投稿ID、メディアURL、件数、処理済み期間をXのサイトデータ（IndexedDB）へ保存します。
 - Xの取得制限に達すると解除時刻まで待ち、タブが開いていれば自動再開します。タブを閉じても、次回の実行時に同じ位置から再開します。
-- Xの一時的なカーソルには依存せず、保存した最古投稿IDから `max_id` 境界を作って過去へ進みます。
+- 2006年から現在までを基本1年単位で走査します。件数が多い期間は半年・月・日へ自動分割し、少ない期間は最大8年まで結合します。
+- 各期間内では保存した最古投稿IDから `max_id` 境界を作り、取得済みのメディアIDは重複保存しません。
 - 「保存済みの進捗を削除して最初から」を選ぶまで、ユーザーごとの進捗を保持します。Xのサイトデータを削除した場合やプライベートブラウズ終了時は進捗も消えます。
 
 ## 保存対象
