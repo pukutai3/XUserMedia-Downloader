@@ -1,0 +1,10 @@
+downloads/
+cookies.txt
+*.sqlite3
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+graphify-out/

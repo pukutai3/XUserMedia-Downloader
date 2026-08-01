@@ -1,0 +1,79 @@
+name: Download X media
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "X username (@ is optional)"
+        required: true
+        type: string
+      write_metadata:
+        description: "Save post metadata as JSON"
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: x-media-download-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Prepare optional X cookies
+        id: cookies
+        env:
+          X_COOKIES_B64: ${{ secrets.X_COOKIES_B64 }}
+        shell: bash
+        run: |
+          if [[ -n "$X_COOKIES_B64" ]]; then
+            cookie_path="$RUNNER_TEMP/x-cookies.txt"
+            printf '%s' "$X_COOKIES_B64" | base64 --decode > "$cookie_path"
+            chmod 600 "$cookie_path"
+            echo "path=$cookie_path" >> "$GITHUB_OUTPUT"
+          else
+            echo "path=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download media
+        env:
+          X_USERNAME: ${{ inputs.username }}
+          WRITE_METADATA: ${{ inputs.write_metadata }}
+          COOKIE_PATH: ${{ steps.cookies.outputs.path }}
+        shell: bash
+        run: |
+          args=(python download_x_media.py "$X_USERNAME" --output downloads)
+          if [[ "$WRITE_METADATA" == "true" ]]; then
+            args+=(--write-metadata)
+          fi
+          if [[ -n "$COOKIE_PATH" ]]; then
+            args+=(--cookies "$COOKIE_PATH")
+          fi
+          "${args[@]}"
+
+      - name: Upload ZIP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: x-media-${{ github.run_id }}
+          path: downloads/
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
