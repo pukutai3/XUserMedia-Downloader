@@ -11,7 +11,8 @@
       return response.text();
     })
     .then((source) => {
-      const bookmarkUrl = `javascript:${source.trim()}`;
+      // Firefox treats a raw # inside a javascript: URL as a fragment boundary.
+      const bookmarkUrl = `javascript:${source.trim().replaceAll("#", "%23")}`;
       link.href = bookmarkUrl;
       link.classList.remove("is-loading");
       copyButton.disabled = false;

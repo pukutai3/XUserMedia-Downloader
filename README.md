@@ -1,6 +1,6 @@
 # XUserMedia-Downloader
 
-[![ブックマークレットを導入](https://img.shields.io/badge/Install-X_Media_Downloader-1686F0?style=for-the-badge&logo=github&logoColor=white)](https://pukutai3.github.io/XUserMedia-Downloader/?v=2.0.2)
+[![ブックマークレットを導入](https://img.shields.io/badge/Install-X_Media_Downloader-1686F0?style=for-the-badge&logo=github&logoColor=white)](https://pukutai3.github.io/XUserMedia-Downloader/?v=2.0.3)
 
 ログイン済みのX上で動く、無料のメディア保存ブックマークレットです。Cookie、パスワード、トークンをGitHubや外部サーバーへ送信せず、取得した画像・GIF・動画をブラウザー内でZIPにまとめます。
 
