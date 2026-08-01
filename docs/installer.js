@@ -5,7 +5,7 @@
   const copyButton = document.querySelector("#copy-button");
   const help = document.querySelector("#bookmark-help");
 
-  fetch("bookmarklet.js", { cache: "no-store" })
+  fetch("bookmarklet.min.js", { cache: "no-store" })
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.text();
