@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">XUserMedia-Downloaderの実際の導入と起動手順</title>
+  <title id="title">GitHub READMEからXUserMedia-Downloaderを導入して起動する手順</title>
   <desc id="desc">導入ページを開き、ボタンをブラウザー上部のブックマークツールバーへ登録し、X上でブックマークを押してユーザー名を入力する4段階の説明図</desc>
   <rect width="1200" height="760" fill="#f7f6f2"/>
   <style>
-    .sans{font-family:Inter,"Noto Sans JP","Yu Gothic UI",sans-serif}.mono{font-family:"IBM Plex Mono","Cascadia Mono",monospace}.h{font-size:26px;font-weight:700;fill:#111}.body{font-size:17px;fill:#343434}.small{font-size:14px;fill:#606060}.step{font-size:16px;font-weight:700;fill:#fff}.card{fill:#fff;stroke:#191919;stroke-width:2}.blue{fill:#1686f0}.line{fill:none;stroke:#111;stroke-width:3}.arrow{fill:none;stroke:#1686f0;stroke-width:4}
+    .sans{font-family:Inter,"Noto Sans JP","Yu Gothic UI",sans-serif}.mono{font-family:"IBM Plex Mono","Cascadia Mono",monospace}.h{font-size:26px;font-weight:700;fill:#111}.body{font-size:17px;fill:#343434}.small{font-size:16px;fill:#606060}.step{font-size:16px;font-weight:700;fill:#fff}.card{fill:#fff;stroke:#191919;stroke-width:2}.blue{fill:#1686f0}.line{fill:none;stroke:#111;stroke-width:3}.arrow{fill:none;stroke:#1686f0;stroke-width:4}
   </style>
   <text x="48" y="52" class="mono h">INSTALL / RUN — ACTUAL FLOW</text>
   <text x="48" y="82" class="sans body">登録場所と、X上で起動する操作を分けて確認します。</text>
@@ -37,7 +37,8 @@
     <path d="m257 89 10-11 10 11" class="line"/>
     <rect x="312" y="155" width="192" height="54" fill="#fff" stroke="#191919"/>
     <text x="352" y="188" class="sans" font-size="16" font-weight="700">リンクをコピー</text>
-    <text x="26" y="236" class="sans small">ドラッグできない時だけ、コピーして新規ブックマークのURL欄へ貼り付け</text>
+    <text x="26" y="232" class="sans small">ドラッグできない時だけ「リンクをコピー」</text>
+    <text x="26" y="252" class="sans small">コピー後、新規ブックマークのURL欄へ貼り付け</text>
   </g>
 
   <g transform="translate(48 422)">

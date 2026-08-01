@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
-  <title id="title">全期間を適応分割して取得する仕組み</title>
+  <title id="title">全期間を適応的に分割して取得する仕組み</title>
   <desc id="desc">2006年から現在までを年単位で検索し、少ない期間は結合、多い期間は日単位まで分割し、進捗を保存しながら100件ずつZIPへ出力する図</desc>
   <rect width="1200" height="620" fill="#101114"/>
   <style>
-    .sans{font-family:Inter,"Noto Sans JP","Yu Gothic UI",sans-serif}.mono{font-family:"IBM Plex Mono","Cascadia Mono",monospace}.h{font-size:28px;font-weight:700;fill:#fff}.body{font-size:18px;fill:#dededb}.small{font-size:15px;fill:#aaa}.label{font-size:15px;font-weight:700;fill:#101114}.line{stroke:#4a4d52;stroke-width:2}.blue{fill:#1686f0}.paper{fill:#f7f6f2}.muted{fill:#303238}.outline{fill:none;stroke:#777b82;stroke-width:2}
+    .sans{font-family:Inter,"Noto Sans JP","Yu Gothic UI",sans-serif}.mono{font-family:"IBM Plex Mono","Cascadia Mono",monospace}.h{font-size:28px;font-weight:700;fill:#fff}.body{font-size:19px;fill:#dededb}.small{font-size:17px;fill:#aaa}.label{font-size:17px;font-weight:700;fill:#101114}.line{stroke:#4a4d52;stroke-width:2}.blue{fill:#1686f0}.paper{fill:#f7f6f2}.muted{fill:#303238}.outline{fill:none;stroke:#777b82;stroke-width:2}
   </style>
   <text x="54" y="58" class="mono h">ARCHIVE SWEEP / 2006 → NOW</text>
   <text x="54" y="91" class="sans body">検索結果の密度に合わせて期間を結合・分割します</text>
@@ -50,7 +50,7 @@
   <g transform="translate(733 545)">
     <rect width="130" height="44" class="paper"/><text x="31" y="28" class="sans label">ZIP 001</text>
     <rect x="140" width="130" height="44" class="paper"/><text x="171" y="28" class="sans label">ZIP 002</text>
-    <rect x="280" width="130" height="44" class="blue"/><text x="311" y="28" class="sans" font-size="15" font-weight="700" fill="#fff">ZIP 003…</text>
+    <rect x="280" width="130" height="44" class="blue"/><text x="305" y="28" class="sans" font-size="17" font-weight="700" fill="#fff">ZIP 003…</text>
   </g>
   <text x="54" y="574" class="sans body">重複IDを除外</text>
   <text x="54" y="600" class="sans small">Xが返さない投稿は取得できません</text>
