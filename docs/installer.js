@@ -11,8 +11,8 @@
       return response.text();
     })
     .then((source) => {
-      // Firefox treats a raw # inside a javascript: URL as a fragment boundary.
-      const bookmarkUrl = `javascript:${source.trim().replaceAll("#", "%23")}`;
+      // Encode the entire program so Firefox does not parse JS punctuation as URL syntax.
+      const bookmarkUrl = `javascript:${encodeURIComponent(source.trim())}`;
       link.href = bookmarkUrl;
       link.classList.remove("is-loading");
       copyButton.disabled = false;
