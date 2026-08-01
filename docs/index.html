@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light">
   <meta name="description" content="ログイン済みのX上でメディアをZIP保存する無料ブックマークレット">
   <title>X Media Downloader — ブックマークレット導入</title>
-  <link rel="stylesheet" href="styles.css?v=2.3.0-layout2">
+  <link rel="stylesheet" href="styles.css?v=2.3.0-layout3">
 </head>
 <body>
   <header class="masthead">
@@ -19,13 +19,14 @@
       <p class="eyebrow">X USER MEDIA DOWNLOADER</p>
       <h1 id="page-title">過去のメディアを、<br>このブラウザーから保存。</h1>
       <p class="lead">アプリのインストールも認証情報の登録も不要です。下のボタンをブックマークバーへ一度だけ登録してください。</p>
+      <p class="compatibility"><strong>対応環境</strong> PC版 Firefox / Chrome / Edge <span>スマートフォン非対応</span></p>
     </section>
 
     <section class="installer" aria-labelledby="install-title">
       <div class="section-number" aria-hidden="true">01</div>
       <div class="installer-copy">
         <h2 id="install-title">ブックマークへ登録</h2>
-        <p>ボタンをクリックするのではなく、ブラウザー上部のブックマークバーへドラッグします。</p>
+        <p>青い「Xメディア取得」を、ブラウザー上部のブックマークツールバーへドラッグして登録します。クリックだけでは登録されません。</p>
       </div>
       <div class="action-area">
         <a id="bookmarklet" class="bookmarklet is-loading" href="#" draggable="true" aria-describedby="bookmark-help">
@@ -33,13 +34,13 @@
           Xメディア取得
         </a>
         <button id="copy-button" class="copy-button" type="button" disabled>リンクをコピー</button>
-        <p id="bookmark-help" class="microcopy">ブックマークバーがない場合は、リンクをコピーして新しいブックマークのURL欄へ貼り付けます。</p>
+        <p id="bookmark-help" class="microcopy">ドラッグできない場合は「リンクをコピー」→ 新しいブックマークを作成 → URL欄へ貼り付け。</p>
       </div>
     </section>
 
     <ol class="steps">
-      <li><span>02</span><strong>Xを開く</strong><p>メディアを閲覧できるアカウントでログインします。</p></li>
-      <li><span>03</span><strong>ブックマークを押す</strong><p>ユーザー名を入力すると、現在から過去へ取得します。</p></li>
+      <li><span>02</span><strong>ログイン済みのXを開く</strong><p>メディアを閲覧できるアカウントでx.comへログインします。</p></li>
+      <li><span>03</span><strong>ブックマークを押す</strong><p>登録した「Xメディア取得」を押し、対象ユーザー名を入力します。</p></li>
       <li><span>04</span><strong>ZIPを保存</strong><p>100件ごとのZIPを順番に保存します。取得制限時は保存位置から再開します。</p></li>
     </ol>
 
@@ -51,7 +52,7 @@
 
   <footer>
     <a href="https://github.com/pukutai3/XUserMedia-Downloader">Source on GitHub</a>
-    <span>Use responsibly.</span>
+    <span>利用はすべて自己責任です。</span>
   </footer>
 
   <script src="installer.js?v=2.3.0"></script>

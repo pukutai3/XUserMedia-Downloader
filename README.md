@@ -4,18 +4,23 @@ Xのユーザー名またはプロフィールURLを入力すると、**Xの検�
 
 PCへのアプリ・拡張機能のインストール、GitHub Actions、GitHub Secret、有料のX APIは使いません。処理はログイン済みのXタブ内で動きます。
 
-[![Xメディア取得を導入](https://img.shields.io/badge/ブックマークへ導入-X_Media_Downloader-1686F0?style=for-the-badge&logo=github&logoColor=white)](https://pukutai3.github.io/XUserMedia-Downloader/?v=2.3.0)
+> [!NOTE]
+> 対応環境はPC版 Firefox、Chrome、Edgeです。スマートフォンには対応していません。
+
+**次のボタンから導入ページを開きます。**
+
+[![XUserMedia-Downloaderの導入ページを開く](https://img.shields.io/badge/導入ページを開く-X_Media_Downloader-1686F0?style=for-the-badge&logo=github&logoColor=white)](https://pukutai3.github.io/XUserMedia-Downloader/?v=2.3.0)
 
 > [!IMPORTANT]
 > このツールは「Xの検索結果に現れるメディア」を可能な限り取得します。削除済み・非公開・閲覧権限外・Xの検索に収録されていない投稿までは取得できません。
 
 ![導入ページを開き、ボタンをブラウザー上部のブックマークバーへ登録し、X上で起動してユーザー名を入力する4段階の操作図](docs/assets/readme-install-v4.svg)
 
-## まず使う — 4ステップ
+## 使い方 — 4ステップ
 
 ### 1. 導入ページを開く
 
-上の青い「ブックマークへ導入」ボタンを押して、導入ページを開きます。
+上の青い「導入ページを開く」ボタンを押します。このボタン自体がブックマークを登録するわけではありません。
 
 ### 2. ブックマークへ登録
 
