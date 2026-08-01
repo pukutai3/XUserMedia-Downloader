@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: セキュリティ上の問題を非公開で報告
+    url: https://github.com/pukutai3/XUserMedia-Downloader/security/advisories/new
+    about: Cookie、認証情報、任意コード実行、意図しない外部送信などはこちらから報告してください

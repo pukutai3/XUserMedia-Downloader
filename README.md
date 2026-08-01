@@ -148,4 +148,12 @@ https://x.com/your_username
 - 導入ページ: `docs/index.html`
 - ブックマーク生成: `docs/installer.js`
 
-圧縮版を更新した場合は、導入ページとREADMEのバージョン付きURLも同時に更新してください。
+圧縮版は次のコマンドで再生成します。Terserのバージョンは再現性のため固定しています。
+
+```powershell
+npx --yes terser@5.44.0 docs/bookmarklet.js --compress --mangle --output docs/bookmarklet.min.js
+```
+
+圧縮版を更新した場合は、`docs/bookmarklet.js` と `docs/bookmarklet.min.js` のバージョン番号、導入ページとREADMEのバージョン付きURLも同時に更新してください。
+
+コード内のBearer文字列はXのWebクライアントで使用される公開値であり、このリポジトリ所有者のAPIキーや秘密情報ではありません。CookieとCSRF情報はリポジトリへ保存せず、GitHubや外部サーバーへ送信しません。
