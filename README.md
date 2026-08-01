@@ -1,55 +1,38 @@
 # XUserMedia-Downloader
 
-[![Xメディア取得を起動](https://img.shields.io/badge/Run-X_Media_Downloader-2EA44F?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/pukutai3/XUserMedia-Downloader/actions/workflows/download-x-media.yml)
+[![ブックマークレットを導入](https://img.shields.io/badge/Install-X_Media_Downloader-1686F0?style=for-the-badge&logo=github&logoColor=white)](https://pukutai3.github.io/XUserMedia-Downloader/)
 
-GitHub ActionsでXのユーザー名を入力すると、そのユーザー自身が投稿した画像・GIF・動画をZIPにまとめます。Xのプロフィールに表示される範囲だけで終わらせず、`gallery-dl`のメディアタイムラインと検索を使用します。ただし、検索索引に存在しない投稿、削除済み・非公開・閲覧権限外の投稿は取得できません。
-
-## 初回のみ: X認証を設定
-
-現在のXはユーザーのメディアタイムライン取得にもログインを要求します。GitHubの実行環境は手元のブラウザーCookieを直接読めないため、最初にWindows上で次を一度実行してください。
-
-1. Firefox、Edge、Chromeのいずれかで `x.com` にログインします。
-2. このリポジトリを取得し、PowerShellでセットアップを実行します。
-
-```powershell
-git clone https://github.com/pukutai3/XUserMedia-Downloader.git
-cd XUserMedia-Downloader
-powershell -ExecutionPolicy Bypass -File .\Setup-XAuthentication.ps1
-```
-
-スクリプトはログイン済みブラウザーからX用Cookieだけを一時取得し、GitHub Actions Secret `X_COOKIES_B64` へ直接登録します。Cookieの内容は画面に表示せず、リポジトリにも保存しません。GitHub CLIやPythonがない場合は、その旨を表示して停止します。
-
-自動選択がうまくいかない場合はブラウザーを指定できます。
-
-```powershell
-.\Setup-XAuthentication.ps1 -Browser Firefox
-.\Setup-XAuthentication.ps1 -Browser Edge
-.\Setup-XAuthentication.ps1 -Browser Chrome
-```
-
-CookieはXアカウントへアクセスできる認証情報です。ワークフロー入力、Issue、Actions Variable、リポジトリ内のファイルには貼らないでください。Xからログアウトした場合や認証期限が切れた場合は、セットアップを再実行します。
+ログイン済みのX上で動く、無料のメディア保存ブックマークレットです。Cookie、パスワード、トークンをGitHubや外部サーバーへ送信せず、取得した画像・GIF・動画をブラウザー内でZIPにまとめます。
 
 ## 使い方
 
-1. 上の緑色の起動ボタンを押します。
-2. `Run workflow` を押します。
-3. `username` にXのユーザー名を入力します。`@username` やプロフィールURLも使用できます。
-4. 実行完了後、ページ下部の `Artifacts` にある `x-media-実行ID` をクリックします。
-5. 取得した画像・GIF・動画を含むZIPがブラウザーからダウンロードされます。
+1. 上の青いボタンから導入ページを開きます。
+2. 「Xメディア取得」ボタンをブックマークバーへドラッグします。
+3. ログイン済みの [X](https://x.com/home) を開きます。
+4. 登録した「Xメディア取得」を押します。
+5. Xのユーザー名を入力して開始します。
+6. 取得完了後、ZIPがブラウザーから保存されます。
 
-GitHub Actionsの仕様上、処理完了と同時にブラウザーへ自動ダウンロードを開始することはできません。Artifactを一度クリックする必要があります。Artifactの保存期間は14日です。
+PCへのアプリや拡張機能のインストール、GitHub Actions、GitHub Secret、X APIの有料契約は使用しません。ブラウザーにはブックマークが1件だけ保存されます。
 
 ## 保存対象
 
-- 対象ユーザー自身が投稿した画像、GIF、動画
-- 任意で各メディアの投稿メタデータJSON
+- 対象ユーザー自身が投稿した画像
+- GIFと動画の最高ビットレートMP4
+- 投稿ID、投稿日時、元投稿URLなどを記録した `manifest.json`
 
-次は除外します。
+リポスト、引用元ユーザーのメディア、削除済み・非公開・閲覧権限外の投稿は除外します。
 
-- リポスト内のメディア
-- 引用元ユーザーのメディア
-- 削除済み、非公開、閲覧権限外の投稿
+## 制約
 
-## 注意
+- Xの非公開Web APIを利用するため、X側の変更で停止する可能性があります。
+- Xの検索・タイムラインが返さない古い投稿は取得できません。
+- 大量のメディアを一つのZIPへ保持するため、ブラウザーの空きメモリが必要です。
+- Xのレート制限を受けた場合は、時間を置いて再実行してください。
+- Chrome、Edge、Firefoxの最新版を対象とします。
 
-対象者の権利とXの規約を守り、私的な調査・正当なアーカイブの範囲で使用してください。X側の仕様変更やアクセス制限により、取得が途中で停止する場合があります。
+## 安全性
+
+処理は表示中のXタブ内で実行されます。通信に必要なXのCSRF CookieだけをXタブ内で参照し、X以外へ送信・保存しません。パスワードやログイン用Cookieにはアクセスしません。メディアデータも外部サーバーへ中継せず、Xの配信元からブラウザーへ直接取得します。
+
+対象者の権利とXの規約を守り、私的な調査・正当なアーカイブの範囲で使用してください。
