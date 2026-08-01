@@ -1,5 +1,9 @@
 # XUserMedia-Downloader
 
+[![Xメディア取得を起動](https://img.shields.io/badge/Run-X_Media_Downloader-2EA44F?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/pukutai3/XUserMedia-Downloader/actions/workflows/download-x-media.yml)
+
+上のボタンからワークフローページを開き、`Run workflow` を押してXのユーザー名を入力します。
+
 GitHub Actionsの画面でXのユーザー名を入力し、そのユーザー自身が投稿した画像・GIF・動画をZIPで取得します。
 
 Xのプロフィールにあるメディア欄だけで終了せず、`gallery-dl` のメディアタイムラインと検索を使用します。ただし、Xの検索索引に存在しない投稿、削除済み・非公開・閲覧権限外の投稿は取得できません。
