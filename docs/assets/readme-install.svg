@@ -48,7 +48,7 @@
     <text x="28" y="165" class="sans body">入力します。</text>
     <text x="28" y="211" class="sans" font-size="15" font-weight="700">Xユーザー名</text>
     <rect x="28" y="226" width="274" height="52" fill="#fff" stroke="#191919"/>
-    <text x="44" y="259" class="sans body">@hiro1195j</text>
+    <text x="44" y="259" class="sans body">@your_username</text>
     <rect x="28" y="298" width="274" height="58" class="blue"/>
     <text x="102" y="334" class="sans" font-size="18" font-weight="700" fill="#fff">取得を開始</text>
     <text x="28" y="386" class="sans small">ユーザー名・@・URLに対応</text>

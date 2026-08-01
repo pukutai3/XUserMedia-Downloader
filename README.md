@@ -26,12 +26,12 @@ PCへのアプリ・拡張機能のインストール、GitHub Actions、GitHub 
 
 ### 3. 対象ユーザーを入力
 
-次のどの形式でも入力できます。
+`your_username` の部分を、保存したいユーザーの名前へ置き換えます。次のどの形式でも入力できます。
 
 ```text
-hiro1195j
-@hiro1195j
-https://x.com/hiro1195j
+your_username
+@your_username
+https://x.com/your_username
 ```
 
 「取得を開始」を押すと全期間の走査が始まります。処理中はXのタブを開いたままにしてください。
