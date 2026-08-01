@@ -9,7 +9,7 @@ PCへのアプリ・拡張機能のインストール、GitHub Actions、GitHub 
 > [!IMPORTANT]
 > このツールは「Xの検索結果に現れるメディア」を可能な限り取得します。削除済み・非公開・閲覧権限外・Xの検索に収録されていない投稿までは取得できません。
 
-![GitHubの導入ページからブックマークへ登録し、X上でユーザー名を入力する3段階の操作図](docs/assets/readme-install.svg)
+![GitHubの導入ページからブックマークへ登録し、X上でユーザー名を入力する3段階の操作図](docs/assets/readme-install-v2.svg)
 
 ## まず使う — 3ステップ
 
