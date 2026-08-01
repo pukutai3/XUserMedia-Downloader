@@ -16,7 +16,7 @@
     <text x="64" y="90" class="sans h">導入ページを開く</text>
     <text x="26" y="128" class="sans body">README上部の青いボタンを押します。</text>
     <rect x="26" y="153" width="478" height="58" class="blue"/>
-    <text x="152" y="189" class="sans" font-size="18" font-weight="700" fill="#fff">ブックマークへ導入</text>
+    <text x="152" y="189" class="sans" font-size="18" font-weight="700" fill="#fff">導入ページを開く</text>
     <text x="26" y="238" class="sans small">→ GitHub Pagesの導入ページが開きます</text>
   </g>
 
