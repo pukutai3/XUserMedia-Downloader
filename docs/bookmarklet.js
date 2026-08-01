@@ -1,5 +1,5 @@
 (()=>{"use strict";
-const VERSION="1.1.0";
+const VERSION="1.1.1";
 const API={
   bearer:"AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
   user:"/i/api/graphql/ck5KkZ8t5cOmoLssopN99Q/UserByScreenName",
@@ -40,17 +40,19 @@ if(document.querySelector("#xmd-overlay")){return;}
 const root=document.createElement("div");root.id="xmd-overlay";
 root.innerHTML=`<style>
 #xmd-overlay{position:fixed;inset:0;z-index:2147483647;background:rgba(12,14,17,.72);display:grid;place-items:center;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17191c}
-#xmd-panel{width:min(540px,calc(100vw - 28px));background:#f7f6f2;border:1px solid #17191c;box-shadow:0 24px 80px rgba(0,0,0,.34)}
+#xmd-overlay,#xmd-overlay *{box-sizing:border-box}
+#xmd-panel{width:min(540px,calc(100vw - 28px));max-height:calc(100vh - 28px);overflow:auto;background:#f7f6f2;border:1px solid #17191c;box-shadow:0 24px 80px rgba(0,0,0,.34)}
 #xmd-head{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid #bfc1bd;font:700 12px/1 ui-monospace,monospace;letter-spacing:.1em}
 #xmd-close{border:0;background:transparent;color:#17191c;font-size:24px;line-height:1;cursor:pointer}
 #xmd-body{padding:28px 22px}#xmd-body h2{margin:0 0 9px;font-size:25px}#xmd-body p{margin:0 0 22px;color:#62676d;line-height:1.6;font-size:14px}
-#xmd-label{display:block;margin-bottom:8px;font-weight:700;font-size:13px}#xmd-user{width:100%;height:50px;border:1px solid #777d83;background:#fff;padding:0 14px;color:#17191c;font:16px/1 system-ui}
+#xmd-label{display:block;margin:0 0 8px;font-weight:700;font-size:13px}#xmd-user{display:block;width:100%;min-width:0;height:50px;margin:0;border:1px solid #777d83;border-radius:0;appearance:none;background:#fff;padding:0 14px;color:#17191c;font:16px/1 system-ui}
 #xmd-user:focus{outline:3px solid #1686f0;outline-offset:2px}#xmd-actions{display:flex;gap:10px;margin-top:16px}
-#xmd-start,#xmd-cancel{height:46px;border:1px solid #17191c;padding:0 18px;font-weight:700;cursor:pointer}#xmd-start{flex:1;background:#1686f0;border-color:#1686f0;color:white}#xmd-cancel{background:transparent;color:#17191c}
+#xmd-start,#xmd-cancel{min-width:0;height:46px;margin:0;border:1px solid #17191c;border-radius:0;appearance:none;padding:0 18px;font:700 14px/1 system-ui;cursor:pointer}#xmd-start{flex:1;background:#1686f0;border-color:#1686f0;color:white}#xmd-cancel{flex:0 0 auto;background:transparent;color:#17191c}
 #xmd-start:disabled{opacity:.55;cursor:wait}#xmd-progress{display:none;margin-top:22px;border-top:1px solid #c9c9c3;padding-top:18px}
 #xmd-progress.show{display:block}#xmd-status{font-weight:700;font-size:14px}#xmd-detail{margin-top:7px;color:#62676d;font:12px/1.5 ui-monospace,monospace;word-break:break-word}
 #xmd-bar{height:5px;margin-top:14px;background:#d9dad6;overflow:hidden}#xmd-fill{height:100%;width:0;background:#1686f0;transition:width .2s}
 @media(prefers-reduced-motion:reduce){#xmd-fill{transition:none}}
+@media(max-width:480px){#xmd-head{padding:16px 18px}#xmd-body{padding:24px 18px}#xmd-actions{display:grid;grid-template-columns:1fr}#xmd-cancel{width:100%}}
 </style><section id="xmd-panel" role="dialog" aria-modal="true" aria-labelledby="xmd-title"><header id="xmd-head"><span>X MEDIA DOWNLOADER / ${VERSION}</span><button id="xmd-close" aria-label="閉じる">×</button></header><div id="xmd-body"><h2 id="xmd-title">ユーザーのメディアを保存</h2><p>現在から過去へ取得し、ブラウザー内でZIPを作ります。処理中はこのタブを閉じないでください。</p><label id="xmd-label" for="xmd-user">Xユーザー名</label><input id="xmd-user" autocomplete="off" spellcheck="false" placeholder="例: OpenAI"><div id="xmd-actions"><button id="xmd-start">取得を開始</button><button id="xmd-cancel">中止</button></div><div id="xmd-progress" aria-live="polite"><div id="xmd-status">準備中</div><div id="xmd-detail"></div><div id="xmd-bar"><div id="xmd-fill"></div></div></div></div></section>`;
 document.body.append(root);
 
