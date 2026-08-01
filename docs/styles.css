@@ -60,16 +60,11 @@ footer {
 }
 
 .intro {
-  padding: 88px 0 72px;
-  display: grid;
-  grid-template-columns: 1fr minmax(280px, 420px);
-  gap: 56px;
-  align-items: end;
+  padding: 72px 0 56px;
 }
 
 .eyebrow {
-  grid-column: 1 / -1;
-  margin: 0 0 -30px;
+  margin: 0 0 24px;
   color: var(--blue-dark);
   font: 700 12px/1 ui-monospace, "Cascadia Mono", monospace;
   letter-spacing: .16em;
@@ -77,14 +72,15 @@ footer {
 
 h1 {
   margin: 0;
-  max-width: 720px;
-  font-size: clamp(42px, 6.4vw, 78px);
-  line-height: 1.08;
+  max-width: 1000px;
+  font-size: clamp(42px, 5.6vw, 72px);
+  line-height: 1.12;
   letter-spacing: -.055em;
 }
 
 .lead {
-  margin: 0 0 8px;
+  max-width: 760px;
+  margin: 28px 0 0;
   color: var(--muted);
   font-size: 17px;
   line-height: 1.85;
@@ -157,7 +153,7 @@ h1 {
 
 .copy-button:hover:not(:disabled) { border-color: var(--white); }
 .copy-button:disabled { opacity: .5; cursor: wait; }
-.microcopy { color: #8f959b; font-size: 12px; line-height: 1.6; }
+.microcopy { color: #aeb3b8; font-size: 14px; line-height: 1.65; }
 
 .steps {
   list-style: none;
@@ -205,10 +201,10 @@ footer {
 
 @media (max-width: 760px) {
   .masthead, main, footer { width: min(100% - 28px, 1120px); }
-  .intro { padding: 58px 0 48px; display: block; }
+  .intro { padding: 52px 0 44px; }
   .eyebrow { margin-bottom: 22px; }
-  h1 { font-size: clamp(38px, 12vw, 58px); }
-  .lead { margin-top: 30px; }
+  h1 { font-size: clamp(36px, 11vw, 56px); line-height: 1.14; }
+  .lead { margin-top: 24px; font-size: 16px; line-height: 1.75; }
   .installer { grid-template-columns: 42px 1fr; padding: 26px 20px; gap: 20px 12px; }
   .action-area { grid-column: 1 / -1; }
   .steps { grid-template-columns: 1fr; gap: 0; padding: 28px 0; }
